@@ -1,0 +1,57 @@
+#!/usr/bin/env bashio
+set -e
+
+bashio::log.info 'Setup voice'
+
+DATA_VOSK=/data/vosk-model
+mkdir -p ${DATA_VOSK}
+cd ${DATA_VOSK}
+
+for lkey in $(bashio::config 'language|keys'); do
+  LANGUAGE=$(bashio::config "language[${lkey}]")
+  bashio::log.info "Checking language ${LANGUAGE}"
+  MODEL_NAME=$LANGUAGE
+  case $LANGUAGE in
+    cn)
+      MODEL_VERSION=0.1
+    ;;
+    de)
+      MODEL_VERSION=0.6
+    ;;
+    en)
+      MODEL_NAME="en-us-aspire"
+      MODEL_VERSION=0.2
+    ;;
+    en-in)
+      MODEL_VERSION=0.4
+    ;;
+    es)
+      MODEL_NAME="small-es"
+      MODEL_VERSION=0.3
+    ;;
+    fr)
+      MODEL_NAME="fr-0.6-linto-2.2.0"
+      MODEL_VERSION=0.6
+    ;;
+    ru)
+      MODEL_VERSION=0.10
+    ;;
+    *)
+      bashio::log.error "Language not valid - $LANGUAGE"
+      exit 1
+    ;;
+  esac
+
+  MODEL_FOLDER=${DATA_VOSK}/${LANGUAGE}
+  MODEL_FULLNAME=vosk-model-${MODEL_NAME}-${MODEL_VERSION}
+
+  if [ ! -f "${MODEL_FOLDER}/mfcc.conf" ]; then
+    bashio::log.info "Downloading ${MODEL_FULLNAME}"
+
+    wget --continue https://alphacephei.com/vosk/models/${MODEL_FULLNAME}.zip
+    unzip ${MODEL_FULLNAME}.zip
+    mv ${MODEL_FULLNAME} ${LANGUAGE}
+    rm -f ${MODEL_FULLNAME}.zip
+  fi
+
+done
