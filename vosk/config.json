@@ -1,0 +1,25 @@
+{
+  "name": "Vosk",
+  "version": "0.0.1",
+  "slug": "vosk-server",
+  "description": "Speech-To-Text service",
+  "url": "https://github.com/duhow/hassio-addons/tree/main/vosk",
+  "arch": ["amd64"],
+  "startup": "service",
+  "boot": "auto",
+  "stage": "experimental",
+  "panel_icon": "mdi:text-to-speech",
+  "homeassistant": "0.102.0",
+  "image": "ghcr.io/duhow/ha-vosk-{arch}",
+  "ports": {
+    "2700/tcp": null
+  },
+  "ingress": false,
+  "ingress_port": 2700,
+  "schema": {
+    "language": ["list(cn|de|en|en-in|es|fr|ru)"]
+  },
+  "options": {
+    "language": ["es"]
+  }
+}
