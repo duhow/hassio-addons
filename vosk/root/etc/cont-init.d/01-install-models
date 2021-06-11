@@ -19,22 +19,43 @@ for lkey in $(bashio::config 'language|keys'); do
       MODEL_VERSION=0.6
     ;;
     en)
-      MODEL_NAME="en-us-aspire"
-      MODEL_VERSION=0.2
+      #MODEL_NAME="en-us-aspire"
+      #MODEL_VERSION=0.2
+      MODEL_NAME="small-en-us"
+      MODEL_VERSION=0.15
     ;;
     en-in)
       MODEL_VERSION=0.4
+    ;;
+    tr)
+      MODEL_NAME="small-tr"
+      MODEL_VERSION=0.3
+    ;;
+    pt)
+      MODEL_NAME="small-pt"
+      MODEL_VERSION=0.3
     ;;
     es)
       MODEL_NAME="small-es"
       MODEL_VERSION=0.3
     ;;
+    ca)
+      MODEL_NAME="small-ca"
+      MODEL_VERSION=0.4
+    ;;
     fr)
       MODEL_NAME="fr-0.6-linto-2.2.0"
       MODEL_VERSION=0.6
     ;;
+    it)
+      MODEL_NAME="small-it"
+      MODEL_VERSION=0.4
+    ;;
     ru)
       MODEL_VERSION=0.10
+    ;;
+    spk)
+      MODEL_VERSION=0.4
     ;;
     *)
       bashio::log.error "Language not valid - $LANGUAGE"

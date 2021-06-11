@@ -1,6 +1,6 @@
 {
   "name": "Vosk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "slug": "vosk-server",
   "description": "Speech-To-Text service",
   "url": "https://github.com/duhow/hassio-addons/tree/main/vosk",
@@ -16,7 +16,7 @@
   "ingress": false,
   "ingress_port": 2700,
   "schema": {
-    "language": ["list(cn|de|en|en-in|es|fr|ru)"]
+    "language": ["list(cn|de|en|en-in|es|ca|pt|fr|it|ru|tr|spk)"]
   },
   "options": {
     "language": ["es"]
