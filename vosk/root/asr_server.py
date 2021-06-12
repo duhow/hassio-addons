@@ -50,6 +50,19 @@ async def recognize(websocket, path):
                 show_words = bool(jobj['words'])
             if 'max_alternatives' in jobj:
                 max_alternatives = int(jobj['max_alternatives'])
+            if 'model' in jobj:
+                model_path = str(jobj['model'])
+                parent_path = pathlib.Path(args.model_path) / '..' / model_path
+
+                if pathlib.Path(model_path).exists():
+                    model = str(pathlib.Path(model_path))
+                    logging.info(f"Using relative path {model}")
+                elif parent_path.exists():
+                    model = str(parent_path)
+                    logging.info(f"Using parent path {model}")
+                else:
+                    logging.warning(f"Model {model} not available")
+
             continue
 
         # Create the recognizer, word list is temporary disabled since not every model supports it
@@ -151,6 +164,6 @@ if __name__ == '__main__':
     args.verbose = min(args.verbose, len(LOG_LEVELS) - 1)
 
     logging.basicConfig(level=LOG_LEVELS[args.verbose])
-    model = Model(args.model_path)
+    model = Model(str(args.model_path))
 
     start()
