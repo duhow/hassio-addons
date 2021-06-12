@@ -15,7 +15,7 @@ from vosk import Model, KaldiRecognizer
 LOG_LEVELS = ["WARNING", "INFO", "DEBUG"]
 
 def process_chunk(rec, message):
-    if message == b'{"eof" : 1}':
+    if message == '{"eof" : 1}':
         return rec.FinalResult(), True
     elif rec.AcceptWaveform(message):
         return rec.Result(), False
