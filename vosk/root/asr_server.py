@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import gc
 import os
 import sys
 import asyncio
@@ -63,6 +64,8 @@ async def recognize(websocket, path):
                     logging.info(f"Using parent path {model}")
                 else:
                     logging.warning(f"Model {model} not available")
+                # use garbage collector to clean previous models
+                gc.collect()
 
             continue
 
