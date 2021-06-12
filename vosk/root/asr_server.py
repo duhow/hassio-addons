@@ -25,6 +25,7 @@ def process_chunk(rec, message):
 async def recognize(websocket, path):
     global loop
     global pool
+    global model
 
     rec = None
     phrase_list = None
@@ -55,10 +56,10 @@ async def recognize(websocket, path):
                 parent_path = pathlib.Path(args.model_path) / '..' / model_path
 
                 if pathlib.Path(model_path).exists():
-                    model = str(pathlib.Path(model_path))
+                    model = Model(str(pathlib.Path(model_path)))
                     logging.info(f"Using relative path {model}")
                 elif parent_path.exists():
-                    model = str(parent_path)
+                    model = Model(str(parent_path))
                     logging.info(f"Using parent path {model}")
                 else:
                     logging.warning(f"Model {model} not available")
