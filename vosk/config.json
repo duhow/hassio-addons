@@ -1,6 +1,6 @@
 {
   "name": "Vosk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "slug": "vosk-server",
   "description": "Speech-To-Text service",
   "url": "https://github.com/duhow/hassio-addons/tree/main/vosk",
@@ -16,9 +16,16 @@
   "ingress": false,
   "ingress_port": 2700,
   "schema": {
-    "language": ["list(cn|de|en|en-in|es|ca|pt|fr|it|ru|tr|spk)"]
+    "language": ["list(cn|de|en|en-in|es|ca|pt|fr|it|ru|tr|spk)"],
+    "sample_rate": "list(8000|16000)",
+    "alternatives": "int?",
+    "hide_words": "bool?",
+    "gpu": "bool?",
+    "verbose": "list(warning|info|debug)"
   },
   "options": {
-    "language": ["es"]
+    "language": ["es"],
+    "sample_rate": 8000,
+    "verbose": "info"
   }
 }
