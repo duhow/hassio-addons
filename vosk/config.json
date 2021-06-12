@@ -1,6 +1,6 @@
 {
   "name": "Vosk",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "slug": "vosk-server",
   "description": "Speech-To-Text service",
   "url": "https://github.com/duhow/hassio-addons/tree/main/vosk",

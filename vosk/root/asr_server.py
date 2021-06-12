@@ -30,7 +30,7 @@ async def recognize(websocket, path):
     phrase_list = None
     sample_rate = args.sample_rate
     show_words = not args.hide_words
-    max_alternatives = args.max_alternatives
+    max_alternatives = args.alternatives
 
     logging.info('Connection from %s', websocket.remote_address);
 
