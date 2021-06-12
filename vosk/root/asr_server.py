@@ -74,7 +74,7 @@ async def recognize(websocket, path):
                  rec = KaldiRecognizer(model, sample_rate, json.dumps(phrase_list, ensure_ascii=False))
             else:
                  rec = KaldiRecognizer(model, sample_rate)
-            rec.SetWords(show_words)
+            #rec.SetWords(show_words)
             rec.SetMaxAlternatives(max_alternatives)
 
         response, stop = await loop.run_in_executor(pool, process_chunk, rec, message)
