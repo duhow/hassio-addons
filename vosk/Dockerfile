@@ -6,12 +6,12 @@ ENV VOSK_MODEL=en
 
 ARG BASHIO_VERSION=0.14.3
 
-RUN wget https://github.com/hassio-addons/bashio/archive/refs/tags/v${BASHIO_VERSION}.tar.gz && \
+RUN apt update && apt install -y curl wget jq && rm -rf /var/lib/apt/lists && \
+    wget https://github.com/hassio-addons/bashio/archive/refs/tags/v${BASHIO_VERSION}.tar.gz && \
     tar xzvf v${BASHIO_VERSION}.tar.gz && \
     mv bashio-${BASHIO_VERSION}/lib /usr/lib/bashio && \
     ln -s /usr/lib/bashio/bashio /usr/bin/bashio && \
-    rm -rf v${BASHIO_VERSION}.tar.gz bashio-${BASHIO_VERSION} && \
-    apt update && apt install -y jq && rm -rf /var/lib/apt/lists
+    rm -rf v${BASHIO_VERSION}.tar.gz bashio-${BASHIO_VERSION}
 
 COPY root /
 
