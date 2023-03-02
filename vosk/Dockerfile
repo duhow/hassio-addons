@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 ENV VOSK_MODEL=en
 
-ARG BASHIO_VERSION=0.13.1
+ARG BASHIO_VERSION=0.14.3
 
 RUN wget https://github.com/hassio-addons/bashio/archive/refs/tags/v${BASHIO_VERSION}.tar.gz && \
     tar xzvf v${BASHIO_VERSION}.tar.gz && \

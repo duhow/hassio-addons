@@ -13,18 +13,19 @@ for lkey in $(bashio::config 'language|keys'); do
   MODEL_NAME=$LANGUAGE
   case $LANGUAGE in
     cn)
-      MODEL_VERSION=0.1
+      MODEL_NAME="small-cn"
+      MODEL_VERSION=0.22
     ;;
     de)
-      MODEL_VERSION=0.6
+      MODEL_NAME="small-de"
+      MODEL_VERSION=0.15
     ;;
     en)
-      #MODEL_NAME="en-us-aspire"
-      #MODEL_VERSION=0.2
       MODEL_NAME="small-en-us"
       MODEL_VERSION=0.15
     ;;
     en-in)
+      MODEL_NAME="small-en-in"
       MODEL_VERSION=0.4
     ;;
     tr)
@@ -37,22 +38,23 @@ for lkey in $(bashio::config 'language|keys'); do
     ;;
     es)
       MODEL_NAME="small-es"
-      MODEL_VERSION=0.3
+      MODEL_VERSION=0.42
     ;;
     ca)
       MODEL_NAME="small-ca"
       MODEL_VERSION=0.4
     ;;
     fr)
-      MODEL_NAME="fr-0.6-linto-2.2.0"
-      MODEL_VERSION=0.6
+      MODEL_NAME="small-fr"
+      MODEL_VERSION=0.22
     ;;
     it)
       MODEL_NAME="small-it"
-      MODEL_VERSION=0.4
+      MODEL_VERSION=0.22
     ;;
     ru)
-      MODEL_VERSION=0.10
+      MODEL_NAME="small-ru"
+      MODEL_VERSION=0.22
     ;;
     spk)
       MODEL_VERSION=0.4
